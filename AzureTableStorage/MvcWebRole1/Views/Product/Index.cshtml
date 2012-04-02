@@ -1,0 +1,47 @@
+@model IEnumerable<MvcWebRole1.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Category
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { partitionKey = item.PartitionKey, rowKey = item.RowKey }) |
+            @Html.ActionLink("Details", "Details", new { partitionKey = item.PartitionKey, rowKey = item.RowKey }) |
+            @Html.ActionLink("Delete", "Delete", new { partitionKey = item.PartitionKey, rowKey = item.RowKey })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@String.Format("{0:F}", item.Price)
+        </td>
+        <td>
+			@item.Category
+        </td>
+    </tr>
+}
+
+</table>
+
+

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Microsoft.WindowsAzure.StorageClient.CloudBlob>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model) { 
+    <span>@item.Name</span> <span>@item.Metadata["Description"]</span>
+    <img src=@item.Uri />
+}
